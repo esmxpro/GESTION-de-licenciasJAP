@@ -1,0 +1,178 @@
+{% extends "base.html" %}
+
+{% block title %}Iniciar Sesión{% endblock %}
+
+{% block content %}
+<div class="login-container">
+  <div class="login-card">
+    <h2>Inicia sesión</h2>
+    <form method="POST">
+      <input type="text" name="carnet" placeholder="Usuario" required>
+      <input type="password" name="contrasena" placeholder="Contraseña" required>
+      <button type="submit">Ingresar 👌</button>
+    </form>
+
+  
+  </div>
+</div>
+
+<style>
+  :root {
+    --color-primary: #0077b6;
+    --color-secondary: #0096c7;
+    --color-accent: #00b4d8;
+    --bg-light: #f9f9f9;
+    --bg-dark: #121212;
+  }
+
+  /* --- Contenedor general --- */
+  .login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: var(--bg-light);
+    padding: 1rem;
+  }
+
+  /* --- Tarjeta del login --- */
+  .login-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 2.5rem 2rem;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .login-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  }
+
+  .login-card h2 {
+    margin-bottom: 1.5rem;
+    color: var(--color-accent);
+    font-weight: 600;
+    font-size: 1.6rem;
+  }
+
+  /* --- Formulario --- */
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  input {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s, background 0.3s;
+  }
+
+  input:focus {
+    border-color: var(--color-accent);
+    background: #f0f8ff;
+    outline: none;
+  }
+
+  button {
+    background: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+  }
+
+  button:hover {
+    background: var(--color-secondary);
+    transform: scale(1.03);
+  }
+
+  /* --- Texto de registro --- */
+  .register-text {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+  }
+
+  .register-text a {
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .register-text a:hover {
+    text-decoration: underline;
+  }
+
+  /* --- Responsividad --- */
+  @media (max-width: 768px) {
+    .login-card {
+      padding: 2rem 1.5rem;
+      max-width: 90%;
+    }
+
+    .login-card h2 {
+      font-size: 1.4rem;
+    }
+
+    input, button {
+      font-size: 0.95rem;
+      padding: 10px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .login-card {
+      padding: 1.5rem 1rem;
+    }
+
+    .login-card h2 {
+      font-size: 1.3rem;
+    }
+
+    button {
+      padding: 10px;
+      width: 100%;
+    }
+  }
+
+  /* --- Modo oscuro --- */
+  .dark-mode .login-container {
+    background: var(--bg-dark);
+  }
+
+  .dark-mode .login-card {
+    background: #1e1e1e;
+    color: #eee;
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
+  }
+
+  .dark-mode input {
+    background: #2a2a2a;
+    color: #fff;
+    border-color: #444;
+  }
+
+  .dark-mode input:focus {
+    border-color: var(--color-accent);
+  }
+
+  .dark-mode button {
+    background: #0077b6;
+  }
+
+  .dark-mode button:hover {
+    background: #00b4d8;
+  }
+</style>
+{% endblock %}

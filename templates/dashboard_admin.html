@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block title %}Panel de Administración{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+  <main class="main-content">
+
+    <section id="profesores">
+       <h1>Bienvenido, {{ session['user_name'] }}</h1>
+      <h2>Profesores Registrados</h2>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Carnet</th>
+              <th>Turno</th>
+              <th>Especialidad</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for profesor in profesores %}
+            <tr>
+              <td>{{ profesor['nombre'] }}</td>
+              <td>{{ profesor['carnet'] }}</td>
+              <td>{{ profesor['turno'] }}</td>
+              <td>{{ profesor['especialidad'] }}</td>
+              <td>
+                <a href="{{ url_for('eliminar_profesor', id=profesor['id']) }}" class="btn-delete" onclick="return confirm('¿Estás seguro de eliminar al profesor?')">Eliminar</a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <a href="{{ url_for('register_profesor') }}" class="btn-add">➕ Registrar nuevo profesor</a>
+    </section>
+
+    <section id="licencias">
+      <h2>Solicitudes de Licencia</h2>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Profesor</th>
+              <th>Desde</th>
+              <th>Hasta</th>
+              <th>Motivo</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for licencia in licencias %}
+            <tr>
+              <td>{{ licencia['nombre'] }}</td>
+              <td>{{ licencia['fecha_inicio'] }}</td>
+              <td>{{ licencia['fecha_fin'] }}</td>
+              <td>{{ licencia['motivo'] }}</td>
+              <td>{{ licencia['estado'] }}</td>
+              <td>
+                {% if licencia['estado'] == 'En espera' %}
+                  <a href="{{ url_for('aceptar_licencia', id=licencia['id']) }}" class="btn-accept">Aceptar</a>
+                  <a href="{{ url_for('rechazar_licencia', id=licencia['id']) }}" class="btn-reject">Rechazar</a>
+                {% else %}
+                  <span class="no-action">-</span>
+                {% endif %}
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</div>
+{% endblock %}

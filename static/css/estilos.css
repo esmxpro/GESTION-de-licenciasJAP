@@ -1,0 +1,116 @@
+/* --- Contenedor de la tabla --- */
+.tabla-container {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  margin-top: 1rem;
+  scrollbar-width: thin;
+  scrollbar-color: #ccc transparent;
+}
+
+/* --- Scroll personalizado --- */
+.tabla-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.tabla-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.tabla-container::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 10px;
+}
+
+/* --- Tabla principal --- */
+.tabla-licencias {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  min-width: 500px; /* evita que se rompa el diseño en móviles */
+}
+
+.tabla-licencias th,
+.tabla-licencias td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.tabla-licencias th {
+  background: var(--color-primary);
+  color: white;
+  font-weight: 600;
+}
+
+.tabla-licencias tr:hover {
+  background: #f5faff;
+}
+
+/* --- Responsivo para pantallas pequeñas --- */
+@media (max-width: 768px) {
+  .tabla-container {
+    box-shadow: none;
+    background: transparent;
+    overflow-x: visible;
+  }
+
+  .tabla-licencias {
+    border: none;
+    display: block;
+  }
+
+  .tabla-licencias thead {
+    display: none;
+  }
+
+  .tabla-licencias tbody {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .tabla-licencias tr {
+    display: grid;
+    background: white;
+    border-radius: 10px;
+    padding: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+
+  .tabla-licencias td {
+    border: none;
+    padding: 8px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .tabla-licencias td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    color: #333;
+  }
+}
+
+/* --- Modo oscuro --- */
+.dark-mode .tabla-container {
+  background: #1e1e1e;
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.05);
+  scrollbar-color: #555 transparent;
+}
+
+.dark-mode .tabla-container::-webkit-scrollbar-thumb {
+  background-color: #555;
+}
+
+.dark-mode .tabla-licencias tr {
+  background: #1e1e1e;
+}
+
+.dark-mode .tabla-licencias td::before {
+  color: #ccc;
+}

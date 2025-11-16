@@ -1,0 +1,192 @@
+/* === Estilos generales === */
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background-color: #f5f7fa;
+  color: #333;
+}
+
+.dashboard-container {
+  display: flex;
+  min-height: 100vh;
+  flex-wrap: wrap; /* Para que los elementos se acomoden en pantallas pequeñas */
+}
+
+/* === Barra lateral === */
+.sidebar {
+  width: 240px;
+  background: #2b3e50;
+  color: #fff;
+  padding: 20px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar h2 {
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin: 10px 0;
+}
+
+.sidebar a {
+  color: #cfd8dc;
+  text-decoration: none;
+  display: block;
+  padding: 10px;
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+
+.sidebar a:hover {
+  background: #1a252f;
+  color: #fff;
+}
+
+/* === Contenido principal === */
+.main-content {
+  flex: 1;
+  padding: 30px;
+  min-width: 0; /* Evita overflow horizontal */
+}
+
+header h1 {
+  font-size: 1.6rem;
+  color: #222;
+}
+
+h2 {
+  margin-top: 30px;
+  font-size: 1.4rem;
+  color: #333;
+}
+
+/* === Tablas === */
+.table-container {
+  overflow-x: auto;
+  margin-top: 10px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  min-width: 600px; /* Mantener un ancho mínimo para pantallas pequeñas */
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background: #2b3e50;
+  color: #fff;
+}
+
+tr:hover {
+  background: #f0f0f0;
+}
+
+/* === Botones === */
+.btn-add, .btn-delete, .btn-accept, .btn-reject {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 500;
+  margin: 2px 0;
+  white-space: nowrap; /* Evita que se dividan los textos */
+}
+
+.btn-add { background: #007bff; color: #fff; }
+.btn-delete { background: #e74c3c; color: #fff; }
+.btn-accept { background: #2ecc71; color: #fff; }
+.btn-reject { background: #f39c12; color: #fff; }
+
+.btn-add:hover, .btn-delete:hover, .btn-accept:hover, .btn-reject:hover {
+  opacity: 0.85;
+}
+
+/* === Responsive === */
+@media (max-width: 1024px) {
+  .dashboard-container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    text-align: center;
+    position: relative;
+    height: auto;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+
+  .sidebar h2 {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .sidebar ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .sidebar li {
+    margin: 5px 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    padding: 15px;
+  }
+
+  table {
+    font-size: 0.85rem;
+    min-width: 100%; /* Que la tabla se ajuste al contenedor */
+  }
+
+  th, td {
+    padding: 6px 8px;
+  }
+
+  .btn-add, .btn-delete, .btn-accept, .btn-reject {
+    padding: 4px 8px;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 1.3rem;
+  }
+
+  h2 {
+    font-size: 1.1rem;
+  }
+
+  .sidebar li {
+    flex: 1 1 100%;
+  }
+
+  table {
+    font-size: 0.8rem;
+  }
+}
